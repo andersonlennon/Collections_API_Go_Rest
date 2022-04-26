@@ -1,3 +1,4 @@
+name: Go_Rest_API tests
 - uses: actions/checkout@master
 - uses: matt-ball/newman-action@master
   with:
