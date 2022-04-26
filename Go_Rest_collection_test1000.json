@@ -1,0 +1,684 @@
+{
+	"info": {
+		"_postman_id": "58503b99-088e-44ac-9ffc-84da49afa2c5",
+		"name": "Go Rest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Recurso Usuarios",
+			"item": [
+				{
+					"name": "Criar Usuarios",
+					"item": [
+						{
+							"name": "Criar Usuario",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.status == 'Created') {\r",
+											"    console.log('User created')\r",
+											"}\r",
+											"else {\r",
+											"    console.log(\"User doesn't created\")\r",
+											"}\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"postman.setNextRequest(\"Update Usuario\")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"teste100002\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"teste100002@tester.com\",\r\n    \"status\": \"active\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}users",
+									"host": [
+										"{{url_base}}users"
+									]
+								},
+								"description": "Test case: Creation of users on user resource.\n\nExpected results:\n\n*   Response status: Created\n*   Responde code: 201"
+							},
+							"response": []
+						}
+					],
+					"description": "Before execute the test case related to creation of users is necessary to pay attention that the **EMAIL** of user need to be a new one"
+				},
+				{
+					"name": "Excluir Usuarios",
+					"item": [
+						{
+							"name": "Deletar Usuario",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}users/{{id_delete}}",
+									"host": [
+										"{{url_base}}users"
+									],
+									"path": [
+										"{{id_delete}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Alterar Usuarios",
+					"item": [
+						{
+							"name": "Update Usuario",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"postman.setNextRequest(\"Buscar Comentarios\")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Tenaliiioiu Ramakrishna\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"tenaliiioiue.ramakrishna@15ce.com\",\r\n    \"status\": \"active\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}users/{{id_update}}",
+									"host": [
+										"{{url_base}}users"
+									],
+									"path": [
+										"{{id_update}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Recurso Posts",
+			"item": [
+				{
+					"name": "Criar Post",
+					"item": [
+						{
+							"name": "Criar Post",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.status == 'Created') {\r",
+											"    console.log('Post created')\r",
+											"}\r",
+											"else {\r",
+											"    console.log(\"Post doesn't created\")\r",
+											"}\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1531,\r\n    \"user_id\": 3101,\r\n    \"title\": \"Commemoro laboriosam volutabrum quasi catena crudelis omnis desolo attollo sollers attero iusto cum quo textilis cura.\",\r\n    \"body\": \"Dignissimos viscus porro. Enim carbo beatae. Sumptus benevolentia stipes. Curto velum et. Minus cuius abutor. Templum demulceo sufficio. Unus vobis desparatus. Esse decet et. Quia depopulo campana. Et curso textilis. Super ullam ara. Culpa vito depono. Conor subiungo teneo. Tempore curso volva. Arma tersus acquiro. Curso desino victus. Crepusculum sortitus cinis. Antiquus sollicito facilis. Omnis alii strenuus. Creator et vereor. Strues pel et. Barba crinis crastinus.\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}posts",
+									"host": [
+										"{{url_base}}posts"
+									]
+								},
+								"description": "Test case: Creation of posts on post resource.\n\nExpected results:\n\n*   Response status: Created\n*   Responde code: 201"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Buscar Post",
+					"item": [
+						{
+							"name": "Buscar Post",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}posts",
+									"host": [
+										"{{url_base}}posts"
+									]
+								},
+								"description": "Test case: Search for a list of posts on post resource.\n\nExpected results:\n\n*   Responde code: 200"
+							},
+							"response": [
+								{
+									"name": "Buscar Post",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url_base}}posts",
+											"host": [
+												"{{url_base}}posts"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 10 Apr 2022 15:42:31 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "strict-origin-when-cross-origin"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "90"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "79"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "1"
+										},
+										{
+											"key": "X-Pagination-Total",
+											"value": "1991"
+										},
+										{
+											"key": "X-Pagination-Pages",
+											"value": "100"
+										},
+										{
+											"key": "X-Pagination-Page",
+											"value": "1"
+										},
+										{
+											"key": "X-Pagination-Limit",
+											"value": "20"
+										},
+										{
+											"key": "X-Links-Previous",
+											"value": ""
+										},
+										{
+											"key": "X-Links-Current",
+											"value": "https://gorest.co.in/public/v2/posts?page=1"
+										},
+										{
+											"key": "X-Links-Next",
+											"value": "https://gorest.co.in/public/v2/posts?page=2"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"75f3ec74ac74e120904f21ea940fa9a4\""
+										},
+										{
+											"key": "Cache-Control",
+											"value": "max-age=0, private, must-revalidate"
+										},
+										{
+											"key": "X-Request-Id",
+											"value": "096d4888-4610-4aff-be16-76672cd4e963"
+										},
+										{
+											"key": "X-Runtime",
+											"value": "0.024699"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=63072000; includeSubDomains"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 2068,\n        \"user_id\": 3101,\n        \"title\": \"Commemoro laboriosam volutabrum quasi catena crudelis omnis desolo attollo sollers attero iusto cum quo textilis cura.\",\n        \"body\": \"Dignissimos viscus porro. Enim carbo beatae. Sumptus benevolentia stipes. Curto velum et. Minus cuius abutor. Templum demulceo sufficio. Unus vobis desparatus. Esse decet et. Quia depopulo campana. Et curso textilis. Super ullam ara. Culpa vito depono. Conor subiungo teneo. Tempore curso volva. Arma tersus acquiro. Curso desino victus. Crepusculum sortitus cinis. Antiquus sollicito facilis. Omnis alii strenuus. Creator et vereor. Strues pel et. Barba crinis crastinus.\"\n    },\n    {\n        \"id\": 2065,\n        \"user_id\": 3101,\n        \"title\": \"Commemoro laboriosam volutabrum quasi catena crudelis omnis desolo attollo sollers attero iusto cum quo textilis cura.\",\n        \"body\": \"Dignissimos viscus porro. Enim carbo beatae. Sumptus benevolentia stipes. Curto velum et. Minus cuius abutor. Templum demulceo sufficio. Unus vobis desparatus. Esse decet et. Quia depopulo campana. Et curso textilis. Super ullam ara. Culpa vito depono. Conor subiungo teneo. Tempore curso volva. Arma tersus acquiro. Curso desino victus. Crepusculum sortitus cinis. Antiquus sollicito facilis. Omnis alii strenuus. Creator et vereor. Strues pel et. Barba crinis crastinus.\"\n    },\n    {\n        \"id\": 2064,\n        \"user_id\": 3101,\n        \"title\": \"Commemoro laboriosam volutabrum quasi catena crudelis omnis desolo attollo sollers attero iusto cum quo textilis cura.\",\n        \"body\": \"Dignissimos viscus porro. Enim carbo beatae. Sumptus benevolentia stipes. Curto velum et. Minus cuius abutor. Templum demulceo sufficio. Unus vobis desparatus. Esse decet et. Quia depopulo campana. Et curso textilis. Super ullam ara. Culpa vito depono. Conor subiungo teneo. Tempore curso volva. Arma tersus acquiro. Curso desino victus. Crepusculum sortitus cinis. Antiquus sollicito facilis. Omnis alii strenuus. Creator et vereor. Strues pel et. Barba crinis crastinus.\"\n    },\n    {\n        \"id\": 2062,\n        \"user_id\": 3101,\n        \"title\": \"Commemoro laboriosam volutabrum quasi catena crudelis omnis desolo attollo sollers attero iusto cum quo textilis cura.\",\n        \"body\": \"Dignissimos viscus porro. Enim carbo beatae. Sumptus benevolentia stipes. Curto velum et. Minus cuius abutor. Templum demulceo sufficio. Unus vobis desparatus. Esse decet et. Quia depopulo campana. Et curso textilis. Super ullam ara. Culpa vito depono. Conor subiungo teneo. Tempore curso volva. Arma tersus acquiro. Curso desino victus. Crepusculum sortitus cinis. Antiquus sollicito facilis. Omnis alii strenuus. Creator et vereor. Strues pel et. Barba crinis crastinus.\"\n    },\n    {\n        \"id\": 2045,\n        \"user_id\": 4082,\n        \"title\": \"Defessus desino adversus claudeo aqua quis beatus damnatio provident vivo saepe apud dolorem culpa.\",\n        \"body\": \"Ago voluptatibus attollo. Demulceo veritatis socius. Est utor calcar. Campana vulgaris cumque. Architecto verto debeo. Aeneus viduo deleo. Bellicus trans velut. Territo sollicito velociter. Trado vesco sono. Pectus tibi excepturi. Creo depraedor solum. Assumenda varius thorax. Universe ciminatio sint. Caveo articulus tantum. Sapiente verbera commemoro. Ab optio sumptus. Consectetur vir torqueo.\"\n    },\n    {\n        \"id\": 2044,\n        \"user_id\": 4082,\n        \"title\": \"Charisma civis caute voluptas sunt stillicidium callide.\",\n        \"body\": \"Tepidus id depopulo. Vesica eos vaco. Alius attonbitus varius. Viduo aut vinum. Coerceo decimus nobis. Non patria aut. Attollo delectus tamdiu. Tunc territo magnam. Termes neque cervus. Vomica cur itaque. Texo sulum cribro. Arcesso sum aut. Quasi acquiro pectus. Video tardus sequi. Doloribus tametsi comptus. Pecco tactus adopto. Urbs quia ait. Vorago voco ut.\"\n    },\n    {\n        \"id\": 2038,\n        \"user_id\": 4066,\n        \"title\": \"Altus amitto accedo rem contabesco voluptatem cicuta textus bellum non adsum viscus tutis culpa dolorem.\",\n        \"body\": \"Architecto vitium torqueo. Capio colloco desolo. Copia officiis volutabrum. Aegre accommodo turpe. Vitiosus laboriosam strues. Suadeo bellicus quia. Aro commodo voluptas. Atrocitas tepesco pecco. Modi coma crustulum. Tonsor fugiat ocer. Vorax urbs sit. Dolore bibo complectus. Adinventitias patrocinor deporto. Tam viduata ut. Aegrus vacuus cognomen. Atque usitas quia. Consuasor tergum ut.\"\n    },\n    {\n        \"id\": 2037,\n        \"user_id\": 4066,\n        \"title\": \"Admoneo tero dolor patrocinor adeo arbor viridis bene cogito suspendo cilicium.\",\n        \"body\": \"Condico deleo ubi. Quod peior viriliter. Antea tum occaecati. Convoco desino cinis. Omnis et cohaero. Optio quasi laborum. Tactus defaeco stillicidium. Sponte ullus amet. Vero triumphus ascisco. Totus adnuo curriculum. Aeger crebro beatae. Aegre uxor apud. Alter suspendo patruus. Custodia supellex venustas. Dolor barba appello. Viriliter approbo ager. Omnis vorago coruscus. Acidus voluptas tamisium.\"\n    },\n    {\n        \"id\": 2033,\n        \"user_id\": 4057,\n        \"title\": \"Adamo comes tenetur incidunt arcesso amor vae denego error comburo terreo non candidus deduco.\",\n        \"body\": \"Solio casus et. Adfero taceo aliquid. Stipes aestas turpe. Et suspendo vulticulus. Nobis turbo venio. Aut comprehendo balbus. Vulgaris video itaque. Utique conicio velum. Deorsum alienus supplanto. Sperno spes corrupti. Consequatur creta crastinus. Magni truculenter valens. Dapifer curatio demulceo. Aestas damno amiculum. Demonstro accommodo vigor. Sapiente adimpleo expedita. Soluta audeo conqueror. Clibanus delibero degenero. Labore viridis cena.\"\n    },\n    {\n        \"id\": 2032,\n        \"user_id\": 4054,\n        \"title\": \"Bardus vobis tres conitor delectatio thema conventus aureus curia natus antiquus occaecati armo curatio vapulus acerbitas fugit numquam.\",\n        \"body\": \"Thymbra curriculum antepono. Statim sto quas. Vinitor usus sint. Copiose quisquam sonitus. Aperio angustus earum. Arbitro crux abbas. Curiositas sunt auxilium. Architecto usitas voco. Tristis attollo cometes. Delinquo nulla aufero. Coniecto cohors volubilis. Spectaculum bardus cui. Vomito tollo decimus. Tempora abundans audax. Omnis ad conitor. Et est unde.\"\n    },\n    {\n        \"id\": 2031,\n        \"user_id\": 4053,\n        \"title\": \"Defleo addo ulciscor carpo varius voluntarius pectus modi.\",\n        \"body\": \"Considero quaerat abundans. Tabula tutamen peccatus. Depulso numquam eum. Voluptatem terebro adopto. Tristis voluptas rerum. Textus vos vulnus. Porro cupiditas cunae. Cognomen debilito vapulus. Suus cernuus dedecor. Capio facilis amplus. Et voluptas defluo. Clementia valetudo usque. Uberrime ut somnus. Spoliatio thesis blanditiis. Tamisium recusandae cavus. Cado tabella admitto.\"\n    },\n    {\n        \"id\": 2030,\n        \"user_id\": 4052,\n        \"title\": \"Vel tero timidus ullus voluptatibus balbus distinctio calco autem cubo odit et triduana ver apud vorago ciminatio.\",\n        \"body\": \"Voluptas corroboro bellicus. Studio somniculosus vivo. Velum cupiditate tardus. Tergo vomica baiulus. Amissio aveho veniam. Autus voluptatem aveho. Vulgus curatio alioqui. Vicissitudo compello nam. Aliqua doloremque caecus. Abundans uxor claudeo. Degenero et constans. Artificiose volubilis ducimus. Alii unde creo. Antiquus territo arcus. Vel super ambitus. Sed adhuc civis. Arma cupressus deprimo. Tracto averto autem. Dedico consuasor curatio.\"\n    },\n    {\n        \"id\": 2027,\n        \"user_id\": 4043,\n        \"title\": \"Qui vilitas solium usus approbo adhuc administratio et carmen bellum error stillicidium.\",\n        \"body\": \"Arceo turba turbo. Nulla peior suppono. Cena temperantia tero. Caute patria subvenio. Ipsam ars tempora. Arx dedecor perspiciatis. Accommodo accusator tracto. Cedo decimus alioqui. Ter confugo vulgivagus. Tertius voluptates vivo. Damno tergum tribuo. Somnus vesica cariosus. Clarus ait deludo. Quia stabilis suasoria. Casso sublime tergum. Pax curiositas articulus. Depraedor libero dolor. Sequi tyrannus corona. Quo tenax accipio. Substantia abduco atrox.\"\n    },\n    {\n        \"id\": 2006,\n        \"user_id\": 4008,\n        \"title\": \"Voluptates approbo tepesco cito tempus ait.\",\n        \"body\": \"Tepesco caritas verumtamen. Minus suadeo fugit. Ut utroque canis. Convoco vulgo decumbo. Villa et infit. Confugo suadeo degero. Bestia credo excepturi. Nemo circumvenio conspergo. Qui pariatur timor. Accommodo atavus est. Sol agnosco cernuus. Maxime assentator cum. Earum clarus altus. Territo temeritas animadverto. Vultuosus paulatim quisquam. Nihil sint dens. Vestrum angustus vix. Voluptates sonitus ver. Pax quia velit. Veniam cognatus conturbo. Eius thesaurus arbor. Comis ullam incidunt.\"\n    },\n    {\n        \"id\": 2005,\n        \"user_id\": 4006,\n        \"title\": \"Ex sui quis tollo vesica verecundia dolores decor strenuus suscipio ventus corpus coadunatio assentator suppellex beneficium tabernus verto.\",\n        \"body\": \"Amissio denique capto. Varietas convoco ustulo. Thermae comminor sol. Ut argumentum censura. Umbra quibusdam advoco. Thesaurus allatus succedo. Aeneus tandem adficio. Curiositas causa thorax. Alveus solio avoco. Vomito articulus virga. Ab est dolor. Cena arbustum amissio. Tabesco rerum delibero. Ultio vestrum cupressus. Auctus decretum subito. Vulgo aegre angulus. Terebro tamdiu tristis. Adhuc auctor atque. Absum claro vergo. Tolero quibusdam illum. Ver paulatim clam.\"\n    },\n    {\n        \"id\": 2004,\n        \"user_id\": 4002,\n        \"title\": \"Socius cognomen tantum compello deprimo denique villa.\",\n        \"body\": \"Numquam aestus dedecor. Et turpe amiculum. Ager qui cribro. Adultus decipio sunt. Amaritudo bardus acervus. Conscendo convoco repellendus. Strenuus derelinquo benevolentia. Atavus possimus eius. Atrox sit thorax. Tergum caveo ventus. Recusandae comprehendo voro. Decet brevis speciosus. Circumvenio at conforto. Ratione veritas conqueror. Aut tempus umquam. Quos thesis inflammatio. Tardus distinctio decretum. Abeo summopere commodo. Voluptate totidem uxor.\"\n    },\n    {\n        \"id\": 2002,\n        \"user_id\": 3997,\n        \"title\": \"Decimus cruentus careo aut ocer terminatio adsidue thorax tui certus vir tantillus cunae quasi harum carpo confugo combibo.\",\n        \"body\": \"Est bonus vinculum. Stabilis corpus voro. Alter ex urbanus. Voluptatem adsidue aurum. Varius voluptas candidus. Curia desidero reiciendis. Audax dedecor tamisium. Animi artificiose traho. Modi caries debitis. Quasi itaque numquam. Cur cimentarius curis. Cribro saepe vinculum. Tum acidus suffragium. Clementia debilito quaerat. Baiulus blandior solitudo. Quia cito assentator.\"\n    },\n    {\n        \"id\": 2001,\n        \"user_id\": 3993,\n        \"title\": \"Rerum volubilis demoror ab conservo deinde tremo clam.\",\n        \"body\": \"Claustrum ocer attero. Advoco turbo clarus. Arbitro asporto suffragium. Delibero verumtamen ut. Coniecto confugo reiciendis. Celebrer sum succedo. Canto qui tutis. Adiuvo asporto sollers. Amplitudo solvo demonstro. Theologus facere advenio. Dolore amicitia comes. Sequi adulatio adduco. Caveo abeo decretum. Quos depopulo contabesco. Temptatio timidus censura. Usque quia cado. Cursim assumenda voco. Cunae neque tabula.\"\n    },\n    {\n        \"id\": 2000,\n        \"user_id\": 3992,\n        \"title\": \"Vitae vilitas ventito paens cenaculum aut.\",\n        \"body\": \"Qui cohibeo quia. Solutio voluptatem patruus. Auditor doloribus allatus. Allatus approbo vomer. Veniam tyrannus sponte. Viriliter accusantium desolo. Umerus volubilis creta. Tabella optio torrens. Voluptates celo absque. Voluptas ubi apud. Et autem atque. Debilito cavus denique. Est adnuo alias. Voluptatum talio deficio. Debeo inflammatio vicissitudo.\"\n    },\n    {\n        \"id\": 1998,\n        \"user_id\": 3988,\n        \"title\": \"Somniculosus maxime causa demum comedo delinquo aperte ara molestiae auctus alo et abscido antea.\",\n        \"body\": \"Curtus ut thesaurus. Debitis capio cursus. Certus desparatus apud. Ullus auctor cubitum. Delectatio appono amita. Vetus bos terminatio. Averto sed adstringo. Pel quas sit. Sursum provident textus. Totam deserunt vociferor. Nulla utor utique. Molestiae nobis commemoro. Ascit quo sopor. Ut quia dolores. Voro thesis carpo.\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Busca Post Especifico",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}posts/{{id_post_busca}}",
+									"host": [
+										"{{url_base}}posts"
+									],
+									"path": [
+										"{{id_post_busca}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Excluir Post",
+					"item": [
+						{
+							"name": "Excluir Post",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}posts/{{id_post_excluir}}",
+									"host": [
+										"{{url_base}}posts"
+									],
+									"path": [
+										"{{id_post_excluir}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Recurso Comentarios",
+			"item": [
+				{
+					"name": "Criar Comentario",
+					"item": [
+						{
+							"name": "Criar Comentario",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.status == 'Created') {\r",
+											"    console.log('Comment created')\r",
+											"}\r",
+											"else {\r",
+											"    console.log(\"Comment doesn't created\")\r",
+											"}\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1609,\r\n    \"post_id\": 1571,\r\n    \"name\": \"Upendra Pothuvaal\",\r\n    \"email\": \"pothuvaal_upendra@wintheiser.biz\",\r\n    \"body\": \"Assumenda reiciendis suscipit. Officia laudantium consequuntur. Cum et voluptas. Tempore eos ut.\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}comments",
+									"host": [
+										"{{url_base}}comments"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Buscar Comentario",
+					"item": [
+						{
+							"name": "Buscar Comentarios",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}comments",
+									"host": [
+										"{{url_base}}comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Busca Comentario Especifico",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"postman.setNextRequest(null)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}comments/{{id_comentario_busca}}",
+									"host": [
+										"{{url_base}}comments"
+									],
+									"path": [
+										"{{id_comentario_busca}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Excluir Comentario",
+					"item": [
+						{
+							"name": "Excluir Comentario",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}comments/{{id_comentario_excluir}}",
+									"host": [
+										"{{url_base}}comments"
+									],
+									"path": [
+										"{{id_comentario_excluir}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "1aa9cd41982b5bb9595ce9b4d328b9253e2b3379da527633b2648f3721563ba7",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"console.log(pm.info.requestName)"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"if (pm.request.method == 'POST'){",
+					"    console.log('The method executed was:'+ pm.request.name)",
+					"    pm.response.to.have.status(201)",
+					"}",
+					"",
+					"if (pm.request.method == 'DELETE'){",
+					"    console.log('The method executed was:'+ pm.request.name)",
+					"    pm.response.to.have.status(204)",
+					"}",
+					"",
+					"if (pm.request.method == 'GET'|| pm.request.method == 'PATCH'){",
+					"    console.log('The method executed was:'+ pm.request.name)",
+					"    pm.response.to.have.status(200)",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id_delete",
+			"value": "3288",
+			"type": "string"
+		},
+		{
+			"key": "id_update",
+			"value": "2904",
+			"type": "string"
+		},
+		{
+			"key": "id_post_busca",
+			"value": "1144",
+			"type": "string"
+		},
+		{
+			"key": "id_post_excluir",
+			"value": "1571",
+			"type": "string"
+		},
+		{
+			"key": "id_comentario_busca",
+			"value": "1353",
+			"type": "string"
+		},
+		{
+			"key": "id_comentario_excluir",
+			"value": "1572",
+			"type": "string"
+		}
+	]
+}
