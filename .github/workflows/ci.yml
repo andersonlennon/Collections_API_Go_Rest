@@ -1,8 +1,10 @@
-  name: 'Go_Rest_API tests'
+  name: Go_Rest_API tests
   on: [push]
   jobs:
- - uses: 'actions/checkout@master'
- - uses: 'matt-ball/newman-action@master'
-   with:
-    collection: Go_Rest_collection_test1000.json
-    environment: Testes_environment.json
+    runs-on: ubuntu-latest
+    steps:
+      uses: actions/checkout@master
+      uses: matt-ball/newman-action@master
+      with:
+        collection: Go_Rest_collection_test1000.json
+        environment: Testes_environment.json
