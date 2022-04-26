@@ -3,8 +3,8 @@
   jobs:
    runs-on: ubuntu-20.04
    steps:
-    uses: actions/checkout@master
-    uses: matt-ball/newman-action@master
+    - uses: actions/checkout@master
+    - uses: matt-ball/newman-action@master
     with:
      collection: Go_Rest_collection_test1000.json
      environment: Testes_environment.json
