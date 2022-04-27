@@ -47,7 +47,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"teste100003\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"teste100003@tester.com\",\r\n    \"status\": \"active\"\r\n}",
+									"raw": "{\r\n    \"name\": \"teste100004\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"teste100004@tester.com\",\r\n    \"status\": \"active\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -657,7 +657,7 @@
 		},
 		{
 			"key": "id_update",
-			"value": "2904",
+			"value": "2619",
 			"type": "string"
 		},
 		{
@@ -672,7 +672,7 @@
 		},
 		{
 			"key": "id_comentario_busca",
-			"value": "1353",
+			"value": "1233",
 			"type": "string"
 		},
 		{
