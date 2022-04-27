@@ -47,7 +47,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"teste100002\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"teste100002@tester.com\",\r\n    \"status\": \"active\"\r\n}",
+									"raw": "{\r\n    \"name\": \"teste100003\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"teste100003@tester.com\",\r\n    \"status\": \"active\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
